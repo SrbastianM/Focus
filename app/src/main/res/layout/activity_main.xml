@@ -26,7 +26,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="TextView"
+
+        android:layout_marginTop="16dp"
+        android:text=""
         android:textSize="20sp" />
 
     <LinearLayout
@@ -40,20 +42,21 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/stopButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
             android:layout_weight="1"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:text="@string/stop_button"/>
 
         <Button
             android:id="@+id/startButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Start" />
+            android:text="@string/start_countdown" />
     </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

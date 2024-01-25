@@ -4,10 +4,12 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var progressCircularBar : CircularProgressBar
     lateinit var timeLeftText : TextView
     lateinit var startButton : Button
+    lateinit var stopButton : Button
     lateinit var customCountDownTimer : CustomCountdownTimer
 
     private val countDownTime = 60 //seconds
@@ -35,32 +38,39 @@ class MainActivity : AppCompatActivity() {
         progressCircularBar = findViewById(R.id.progress_bar)
         timeLeftText = findViewById(R.id.timeLeft)
         startButton = findViewById(R.id.startButton)
+        stopButton = findViewById(R.id.stopButton)
 
         var secondsLeft = 0
         customCountDownTimer = object : CustomCountdownTimer(clockTimer, 1000) {}
-        customCountDownTimer.onTick = {millisUntilFinished ->
-            val second = (millisUntilFinished / 1000.0f).roundToInt()
-            if ( secondsLeft != second) {
-                secondsLeft = second
-                timerFormat(secondsLeft, timeLeftText)
-            }
-        }
 
         customCountDownTimer.onFinish = {
             timerFormat(0, timeLeftText)
         }
+        // set the circular bar progress
         progressCircularBar.progressMax = progressTime
-        customCountDownTimer.startTimer()
+
 
         startButton.setOnClickListener {
+            stopButton.visibility = View.VISIBLE
+            customCountDownTimer.onTick = {millisUntilFinished ->
+                val second = (millisUntilFinished / 1000.0f).roundToInt()
+                if ( secondsLeft != second) {
+                    secondsLeft = second
+                    timerFormat(secondsLeft, timeLeftText)
+                }
+            }
             customCountDownTimer.startTimer()
+        }
+
+        stopButton.setOnClickListener {
+            customCountDownTimer.pauseTimer()
+            startButton.setText(R.string.restart_button)
         }
 
     }
 
     private fun timerFormat(secondsLeft: Int, timeTxt: TextView) {
         progressCircularBar.setProgressWithAnimation(secondsLeft.toFloat(), 1000)
-//        progressCircularBar.progress = secondsLeft.toFloat()
         val decimalFormat = DecimalFormat("00")
         val hour = secondsLeft / 3600
         val min = (secondsLeft % 3600) / 60
