@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -17,8 +18,8 @@ import kotlin.math.roundToInt
 class MainActivity : AppCompatActivity() {
     lateinit var progressCircularBar : CircularProgressBar
     lateinit var timeLeftText : TextView
-    lateinit var startButton : Button
-    lateinit var stopButton : Button
+    lateinit var startButton : ImageButton
+    lateinit var stopButton : ImageButton
     lateinit var customCountDownTimer : CustomCountdownTimer
 
     private val countDownTime = 60 //seconds
@@ -64,13 +65,16 @@ class MainActivity : AppCompatActivity() {
 
         stopButton.setOnClickListener {
             customCountDownTimer.pauseTimer()
-            startButton.setText(R.string.restart_button)
+//            startButton.setText(R.string.restart_button)
         }
 
     }
 
     private fun timerFormat(secondsLeft: Int, timeTxt: TextView) {
         progressCircularBar.setProgressWithAnimation(secondsLeft.toFloat(), 1000)
+        progressCircularBar.progressBarColorStart  = Color.GRAY
+        progressCircularBar.progressBarColorEnd = Color.RED
+        progressCircularBar.progressBarColorDirection = CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
         val decimalFormat = DecimalFormat("00")
         val hour = secondsLeft / 3600
         val min = (secondsLeft % 3600) / 60
