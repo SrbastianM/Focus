@@ -72,9 +72,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun timerFormat(secondsLeft: Int, timeTxt: TextView) {
         progressCircularBar.setProgressWithAnimation(secondsLeft.toFloat(), 1000)
-        progressCircularBar.progressBarColorStart  = Color.GRAY
-        progressCircularBar.progressBarColorEnd = Color.RED
-        progressCircularBar.progressBarColorDirection = CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
+        progressCircularBar.progressBarColorStart  = Color.BLACK
+        progressCircularBar.progressBarColorEnd = Color.GRAY
+        progressCircularBar.progressBarColorDirection = CircularProgressBar.GradientDirection.LEFT_TO_RIGHT
         val decimalFormat = DecimalFormat("00")
         val hour = secondsLeft / 3600
         val min = (secondsLeft % 3600) / 60
