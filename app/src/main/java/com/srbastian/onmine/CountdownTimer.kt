@@ -1,6 +1,7 @@
 package com.srbastian.onmine
 
 import android.os.CountDownTimer
+import android.util.Log
 
 open class CustomCountdownTimer(
     private val millisInfuture : Long,
@@ -41,12 +42,12 @@ open class CustomCountdownTimer(
         }
     }
     fun startTimer(){
-        timer.start()
         isRunning = true
+        timer.start()
     }
     fun restartTimer(){
         timer.cancel()
-        timer = InternalTimer(this, timer.millisUntilFinished, countDownInterval)
+        timer = InternalTimer(this, millisInfuture, countDownInterval)
         startTimer()
     }
     fun destroyTimer(){

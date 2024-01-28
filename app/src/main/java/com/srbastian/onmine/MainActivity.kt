@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var timeLeftText : TextView
     lateinit var startButton : ImageButton
     lateinit var stopButton : ImageButton
+    lateinit var restartButton: ImageButton
+    lateinit var resumeButton: ImageButton
     lateinit var customCountDownTimer : CustomCountdownTimer
 
     private val countDownTime = 60 //seconds
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         timeLeftText = findViewById(R.id.timeLeft)
         startButton = findViewById(R.id.startButton)
         stopButton = findViewById(R.id.stopButton)
+        restartButton = findViewById(R.id.restartButton)
+        resumeButton = findViewById(R.id.resumeButton)
 
         var secondsLeft = 0
         customCountDownTimer = object : CustomCountdownTimer(clockTimer, 1000) {}
@@ -50,9 +54,12 @@ class MainActivity : AppCompatActivity() {
         // set the circular bar progress
         progressCircularBar.progressMax = progressTime
 
-
+        // Start CountDown Timer
         startButton.setOnClickListener {
             stopButton.visibility = View.VISIBLE
+            restartButton.visibility = View.VISIBLE
+            resumeButton.visibility = View.VISIBLE
+            startButton.visibility = View.GONE
             customCountDownTimer.onTick = {millisUntilFinished ->
                 val second = (millisUntilFinished / 1000.0f).roundToInt()
                 if ( secondsLeft != second) {
@@ -66,6 +73,12 @@ class MainActivity : AppCompatActivity() {
         stopButton.setOnClickListener {
             customCountDownTimer.pauseTimer()
 //            startButton.setText(R.string.restart_button)
+        }
+        restartButton.setOnClickListener {
+            customCountDownTimer.restartTimer()
+        }
+        resumeButton.setOnClickListener {
+            customCountDownTimer.resumeTimer()
         }
 
     }

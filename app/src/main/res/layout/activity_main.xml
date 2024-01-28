@@ -69,6 +69,24 @@
             android:visibility="gone" />
 
         <ImageButton
+            android:id="@+id/resumeButton"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="34dp"
+            android:background="@drawable/curve_start_button"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/restartButton"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="34dp"
+            android:background="@drawable/curve_restart_button"
+            android:visibility="gone" />
+
+
+
+        <ImageButton
             android:id="@+id/startButton"
             android:layout_width="73dp"
             android:layout_height="50dp"
