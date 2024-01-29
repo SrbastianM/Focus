@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -16,6 +18,7 @@ import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
+    // Timer variables
     lateinit var progressCircularBar : CircularProgressBar
     lateinit var timeLeftText : TextView
     lateinit var startButton : ImageButton
@@ -44,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         stopButton = findViewById(R.id.stopButton)
         restartButton = findViewById(R.id.restartButton)
         resumeButton = findViewById(R.id.resumeButton)
+        //tasks
 
         var secondsLeft = 0
         customCountDownTimer = object : CustomCountdownTimer(clockTimer, 1000) {}
@@ -69,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
             customCountDownTimer.startTimer()
         }
-
+        // The stop button isn't work
         stopButton.setOnClickListener {
             customCountDownTimer.pauseTimer()
 //            startButton.setText(R.string.restart_button)
