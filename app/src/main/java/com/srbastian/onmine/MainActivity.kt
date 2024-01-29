@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import androidx.core.view.get
 
 class MainActivity : AppCompatActivity() {
     lateinit var goToTaskActivity : Button
@@ -27,6 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         goToTaskActivity.setOnClickListener {
             var intent = Intent(this@MainActivity, TaskActivity:: class.java)
+            startActivity(intent)
+        }
+        taskOnQueue.setOnItemClickListener { adapterView, view, position, l ->
+            var task : String = arrList[position]
+            var intent = Intent(this@MainActivity, CountdownActivity:: class.java)
+            intent.putExtra("task", task)
             startActivity(intent)
         }
     }

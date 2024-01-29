@@ -20,8 +20,9 @@ class CountdownActivity : AppCompatActivity() {
     lateinit var stopButton : ImageButton
     lateinit var restartButton: ImageButton
     lateinit var resumeButton: ImageButton
-    lateinit var customCountDownTimer : CustomCountdownTimer
+    lateinit var taskOnCourse: TextView
 
+    private lateinit var customCountDownTimer : CustomCountdownTimer
     private val countDownTime = 60 //seconds
     private val clockTimer = (countDownTime * 1000).toLong()
     private val progressTime = (clockTimer / 1000).toFloat()
@@ -32,8 +33,8 @@ class CountdownActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.countdown_layout)
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
         progressCircularBar = findViewById(R.id.progress_bar)
@@ -42,8 +43,10 @@ class CountdownActivity : AppCompatActivity() {
         stopButton = findViewById(R.id.stopButton)
         restartButton = findViewById(R.id.restartButton)
         resumeButton = findViewById(R.id.resumeButton)
+        taskOnCourse = findViewById(R.id.tasksOnCourse)
         //tasks
-
+        var task : String = intent.getStringExtra("task").toString()
+        taskOnCourse.text = task
         var secondsLeft = 0
         customCountDownTimer = object : CustomCountdownTimer(clockTimer, 1000) {}
 

@@ -1,5 +1,7 @@
 package com.srbastian.onmine
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -7,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class TaskActivity : AppCompatActivity() {
@@ -39,6 +42,22 @@ class TaskActivity : AppCompatActivity() {
             nameTask.setText("")
             fileHelper.writeData(arrList, applicationContext)
             arrayAdapter.notifyDataSetChanged()
+        }
+
+        itemTask.setOnItemClickListener { adapterView, view, position, l ->
+            var alert = AlertDialog.Builder(this)
+            alert.setTitle("is Completed?")
+            alert.setMessage("Do you want to Delete this task?")
+            alert.setCancelable(false)
+            alert.setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
+                dialogInterface.cancel()
+            })
+            alert.setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+                arrList.removeAt(position)
+                arrayAdapter.notifyDataSetChanged()
+                fileHelper.writeData(arrList, applicationContext)
+            })
+            alert.create().show()
         }
 
     }

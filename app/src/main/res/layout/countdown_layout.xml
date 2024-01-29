@@ -18,7 +18,7 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:id="@+id/taskDoing"
+            android:id="@+id/tasksOnCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
