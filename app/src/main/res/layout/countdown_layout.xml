@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/ligth_gray"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/taskDoing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="monospace"
+            android:text="Task Test"
+            android:textSize="32sp" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_marginBottom="16dp"
+            app:cpb_background_progressbar_width="5dp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_round_border="false" />
+
+        <TextView
+            android:id="@+id/timeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+
+            android:fontFamily="monospace"
+            android:text=""
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/stopButton"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="34dp"
+            android:background="@drawable/curve_stop_button"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/resumeButton"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="34dp"
+            android:background="@drawable/curve_start_button"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/restartButton"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="34dp"
+            android:background="@drawable/curve_restart_button"
+            android:visibility="gone" />
+
+
+
+        <ImageButton
+            android:id="@+id/startButton"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:background="@drawable/curve_start_button"
+            android:src="@drawable/start" />
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
